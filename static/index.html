@@ -115,7 +115,7 @@
           <div ng-repeat="section in sections" class="col-lg-4">
             <img class="rounded-circle" src="{{ section.prv }}" alt="Generic placeholder image" width="140" height="140">
             <h2>{{ section.name }}</h2>
-            <p>Blah Blah Blah</p>
+            <p>B{{ section.teaser }}</p>
             <p><a class="btn btn-secondary" href="#{{ section.name }}" role="button">View details &raquo;</a></p>   
           </div>
         </div>
@@ -170,7 +170,7 @@
         $scope.sections = [
           {
             name: "About",
-            teaser: "Teaser",
+            teaser: "Teaser1",
             prv: "preview.gif",
             header: "Header",
             subheader: "SubHeader",
@@ -179,6 +179,7 @@
           },
           {
             name: "Features",
+            teaser: "Teaser2",
             prv: "preview.gif",
             header: "Header",
             subheader: "SubHeader",
@@ -187,6 +188,7 @@
           },
           {
             name: "Technology",
+            teaser: "Teaser3",
             prv: "preview.gif",
             header: "Header",
             subheader: "SubHeader",
