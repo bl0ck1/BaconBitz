@@ -3,6 +3,7 @@ const path = require('path')
 const app = express()
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
+var port = process.env.PORT || 3000;
 
 // Routing
 app.use(express.static(path.join(__dirname, 'static')))
@@ -27,4 +28,4 @@ io.on('connection', function(client) {
 
 })
 
-server.listen(80, () => console.log('Example app listening on port 3000!'))
+server.listen(port, () => console.log('Example app listening on port 3000!'))
