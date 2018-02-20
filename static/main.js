@@ -39,7 +39,22 @@ $(function() {
             socket.emit('new message', data);
         });
    
-   
+     // Sends a chat message
+  function sendMessage () {
+    var message = $inputMessage.val();
+    // Prevent markup from being injected into the message
+    message = cleanInput(message);
+    // if there is a non-empty message and a socket connection
+    if (message && connected) {
+      $inputMessage.val('');
+      addChatMessage({
+        username: username,
+        message: message
+      });
+      // tell server to execute 'new message' and send along one parameter
+      socket.emit('new message', message);
+    }
+  }
    
   var FADE_TIME = 150; // ms
   var TYPING_TIMER_LENGTH = 400; // ms
@@ -93,23 +108,6 @@ $(function() {
     }
   }
 
-  // Sends a chat message
-  function sendMessage () {
-    var message = $inputMessage.val();
-    // Prevent markup from being injected into the message
-    message = cleanInput(message);
-    // if there is a non-empty message and a socket connection
-    if (message && connected) {
-      $inputMessage.val('');
-      addChatMessage({
-        username: username,
-        message: message
-      });
-      // tell server to execute 'new message' and send along one parameter
-      socket.emit('new message', message);
-    }
-  }
-
   // Log a message
   function log (message, options) {
     var $el = $('<li>').addClass('log').text(message);
@@ -118,8 +116,10 @@ $(function() {
 
   // Adds the visual chat message to the message list
   function addChatMessage (data, options) {
-          console.log(data);
-    
+    $scope.chatroom.push(data);
+    $scope.$apply();
+    $("#messages_wrapper").scrollTop($("#messages_wrapper")[0].scrollHeight);
+         
      /*
     // Don't fade the message in if there is an 'X was typing'
     var $typingMessages = getTypingMessages(data);
