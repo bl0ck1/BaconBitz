@@ -14,7 +14,6 @@ server.listen(port, function () {
 app.use(express.static(path.join(__dirname, 'static')));
 
 // Chatroom
-
 var numUsers = 0;
 
 io.on('connection', function (socket) {
@@ -24,12 +23,6 @@ io.on('connection', function (socket) {
   socket.on('new message', function (data) {
 	 socket.broadcast.emit('new message',data);
 	  console.log(data);
-    // we tell the client to execute 'new message'
-/*
-    socket.broadcast.emit('new message', {
-      username: socket.username,
-      message: data
-    });*/
   });
 
   // when the client emits 'add user', this listens and executes
@@ -77,35 +70,3 @@ io.on('connection', function (socket) {
     }
   });
 });
-
-/* const express = require('express')
-const path = require('path')
-const app = express()
-var server = require('http').createServer(app);
-var io = require('socket.io')(server);
-var port = process.env.PORT || 3000;
-
-// Routing
-app.use(express.static(path.join(__dirname, 'static')))
-
-app.get('/', function(req, res,next) {
-    res.sendFile(__dirname + '/index.html');
-})
-
-
-io.on('connection', function(client) {
-    console.log('Client connected...');
-
-    client.on('join', function(data) {
-	        console.log(data);
-	    });
-
-    client.on('messages', function(data) {
-	 console.log(data)
-	client.emit('broad', data);
-	//client.broadcast.emit('broad',data);
-    })
-
-})
-
-server.listen(port, () => console.log('Example app listening on port 3000!'))*/
