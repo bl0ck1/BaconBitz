@@ -31,7 +31,16 @@ function ChatController($scope){
         ]
   
 $(function() {
-  
+   
+          $('form').submit(function(e){
+          e.preventDefault();
+          var data = {"name": $('#chat_name').val(),
+                      "message": $('#chat_message').val()};
+            socket.emit('new message', message);
+        });
+   
+   
+   
   var FADE_TIME = 150; // ms
   var TYPING_TIMER_LENGTH = 400; // ms
   var COLORS = [
@@ -271,6 +280,7 @@ $(function() {
 
   // Whenever the server emits 'new message', update the chat body
   socket.on('new message', function (data) {
+     console.log(data);
     addChatMessage(data);
   });
 
