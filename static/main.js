@@ -36,7 +36,7 @@ $(function() {
           e.preventDefault();
           var data = {"name": $('#chat_name').val(),
                       "message": $('#chat_message').val()};
-            socket.emit('new message', message);
+            socket.emit('new message', data);
         });
    
    
