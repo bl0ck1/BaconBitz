@@ -22,7 +22,7 @@ io.on('connection', function(client) {
 
     client.on('messages', function(data) {
 	//client.emit('broad', data);
-	client.broadcast.emit('new message',data);
+	client.broadcast.emit('broad',data);
     })
 
 })
