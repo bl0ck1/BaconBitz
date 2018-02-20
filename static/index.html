@@ -209,6 +209,7 @@
         });
 
         socket.on('broad', function(data) {
+          console.log(data)
           $scope.chatroom.push(data);
           $scope.$apply();
           $("#messages_wrapper").scrollTop($("#messages_wrapper")[0].scrollHeight);
