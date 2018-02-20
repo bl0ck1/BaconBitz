@@ -42,7 +42,6 @@ $(function() {
           var data = {"name": $('#chat_name').val(),
                       "message": $('#chat_message').val()};
             socket.emit('new message', data);
-            $('#chat_name').val('');
             $('#chat_message').val(''); 
             addChatMessage(data);
              /*
