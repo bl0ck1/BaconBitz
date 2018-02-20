@@ -44,7 +44,7 @@ $(function() {
             socket.emit('new message', data);
             $('#chat_name').val('');
             $('#chat_message').val(''); 
-            addChatMessage();
+            addChatMessage(data);
              /*
             $scope.chatroom.push(data);
             $scope.$apply();
