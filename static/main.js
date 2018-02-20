@@ -118,6 +118,9 @@ $(function() {
 
   // Adds the visual chat message to the message list
   function addChatMessage (data, options) {
+          console.log(data);
+    
+     /*
     // Don't fade the message in if there is an 'X was typing'
     var $typingMessages = getTypingMessages(data);
     options = options || {};
@@ -138,7 +141,7 @@ $(function() {
       .addClass(typingClass)
       .append($usernameDiv, $messageBodyDiv);
 
-    addMessageElement($messageDiv, options);
+    addMessageElement($messageDiv, options);*/
   }
 
   // Adds the visual chat typing message
@@ -280,7 +283,6 @@ $(function() {
 
   // Whenever the server emits 'new message', update the chat body
   socket.on('new message', function (data) {
-     console.log(data);
     addChatMessage(data);
   });
 
