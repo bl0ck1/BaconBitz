@@ -29,6 +29,11 @@ function ChatController($scope){
             img: "holder.svg"
           }
         ]
+   
+        $scope.chatroom = [
+          {name: "Host",
+          message: "Welcome"},
+        ];
   
 $(function() {
    
