@@ -42,6 +42,14 @@ $(function() {
           var data = {"name": $('#chat_name').val(),
                       "message": $('#chat_message').val()};
             socket.emit('new message', data);
+            $('#chat_name').val('');
+            $('#chat_message').val(''); 
+            addChatMessage();
+             /*
+            $scope.chatroom.push(data);
+            $scope.$apply();
+            $("#messages_wrapper").scrollTop($("#messages_wrapper")[0].scrollHeight);
+            */
         });
    
      // Sends a chat message
