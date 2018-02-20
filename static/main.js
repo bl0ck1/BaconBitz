@@ -1,4 +1,37 @@
+function ChatController($scope){
+
+   $scope.sections = [
+          {
+            name: "About",
+            teaser: "Teaser1",
+            prv: "preview.gif",
+            header: "About Header",
+            subheader: "SubHeader",
+            details: "Lots of Details!",
+            img: "holder.svg"
+          },
+          {
+            name: "Features",
+            teaser: "Teaser2",
+            prv: "preview.gif",
+            header: "Features Header",
+            subheader: "SubHeader",
+            details: "Lots of details.",
+            img: "holder.svg"
+          },
+          {
+            name: "Technology",
+            teaser: "Teaser3",
+            prv: "preview.gif",
+            header: "Technology Header",
+            subheader: "SubHeader",
+            details: "Lots of details.",
+            img: "holder.svg"
+          }
+        ]
+  
 $(function() {
+  
   var FADE_TIME = 150; // ms
   var TYPING_TIMER_LENGTH = 400; // ms
   var COLORS = [
@@ -280,3 +313,5 @@ $(function() {
   });
 
 });
+  
+}
