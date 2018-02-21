@@ -87,7 +87,6 @@
     <script src="js/main.js"></script>
     <script src="https://smartlock.google.com/client"></script>
     <script>
-      start()
       function start() {
         // Initializes the client with the API key and the Translate API.
         gapi.client.init({
@@ -106,6 +105,9 @@
         }, function(reason) {
           console.log('Error: ' + reason.result.error.message);
         });
+        
+        // Loads the JavaScript client library and invokes `start` afterwards.
+        gapi.load('client', start);
     </script>
   </body>
 </html>
