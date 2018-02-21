@@ -1,6 +1,7 @@
 <html ng-app>
   <head>
     <meta charset="utf-8">
+    <meta name="google-signin-client_id" content="552697354852-fe1rf9ou6rkfa3bc2ngbmh9eo11l38ug.apps.googleusercontent.com">
     <title>bl0ck1 project | BaconBitz</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -19,6 +20,7 @@
               <a class="nav-link" href="#{{ section.name }}">{{ section.name }}</a>
             </li>
           </ul>
+          <div class="g-signin2" data-onsuccess="onSignIn"></div>
         </div>
       </nav>
     </header>
@@ -85,6 +87,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
     <script src="bootstrap.min.js"></script>
     <script src="js/main.js"></script>
-    <script src="https://smartlock.google.com/client"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script>
+      
+    </script>
   </body>
 </html>
