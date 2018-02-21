@@ -133,7 +133,7 @@ $(function() {
 
   // Adds the visual chat message to the message list
   function addChatMessage (data, options) {
-    console.log(data);
+    console.log($scope);
     $scope.chatroom.push(data);
     $scope.$apply();
     $("#messages_wrapper").scrollTop($("#messages_wrapper")[0].scrollHeight);
