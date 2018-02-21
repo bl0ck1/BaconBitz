@@ -85,5 +85,25 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
     <script src="bootstrap.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="https://smartlock.google.com/client"></script>
+    <script>
+      const retrievePromise = googleyolo.retrieve({
+        supportedAuthMethods: [
+          "https://accounts.google.com",
+          "googleyolo://id-and-password"
+        ],
+        supportedIdTokenProviders: [
+          {
+            uri: "https://accounts.google.com",
+            clientId: "AIzaSyDMmdbaNB2D_dFoFzKrCk8ALnoHSU8ErMw"
+          }
+        ]
+      });
+      window.onGoogleYoloLoad = (googleyolo) => {
+        console.log(googleyolo);
+        // The 'googleyolo' object is ready for use.
+      };
+      
+    </script>
   </body>
 </html>
