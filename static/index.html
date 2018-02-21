@@ -1,73 +1,13 @@
 <html ng-app>
   <head>
     <meta charset="utf-8">
-
     <title>bl0ck1 project | BaconBitz</title>
-
-    <style type="text/css">
-      .navbar {
-        box-shadow: 0px 5px 5px grey;
-      }
-      #chatroom_wrapper {
-        padding-top: 10px;
-        height: 410px;
-        width: 100%;
-        position: relative;
-        background-color: #ddd;
-        margin-bottom: 40px;
-      }
-      #chatroom_inner {
-        height: 100%;
-        width: 100%;
-      }
-      #messages_wrapper {
-        height: 70%;
-        overflow-y: hidden;
-      }
-      #chat_form{
-        padding: 10px 10px 10px 0px;
-        position: absolute;
-        bottom: 0px;
-        width: 100%;
-      }
-      #chat_form > div{
-        float:left;
-      }
-      .flexbox { display: flex; }
-      .flexbox .stretch { flex: 1; }
-      .flexbox .normal { flex: 0; margin: 0 0 0 1rem; }
-      .flexbox div input { padding: .5em 1em; width: 100%; }
-
-      .speech-bubble {
-        padding: 5px;
-        margin: 10px 20px 10px 40px;
-        position: relative;
-        background: #79e25d;
-        border-radius: .4em;
-      }
-
-      .speech-bubble:after {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 50%;
-        width: 0;
-        height: 0;
-        border: 20px solid transparent;
-        border-right-color: #79e25d;
-        border-left: 0;
-        border-top: 0;
-        margin-top: -10px;
-        margin-left: -20px;
-      }
-    </style>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link href="carousel.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
   </head>
   <body ng-controller="ChatController">
-
-      <header>
+    <header>
       <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <a class="navbar-brand" href="#">bl0ck1 | BaconBitz</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -82,35 +22,29 @@
         </div>
       </nav>
     </header>
-
-   <main role="main">
-
-     <div id="chatroom_wrapper">
-      <div id="chatroom_inner">
-        <h2>Live Demo:</h2>
-        <div id="messages_wrapper">
+    <main role="main">
+      <div id="chatroom_wrapper">
+        <div id="chatroom_inner">
+          <h2>Live Demo:</h2>
+          <div id="messages_wrapper">
             <div ng-repeat="chat in chatroom" style="list-style: none;">
               <div class="speech-bubble">{{ chat.name }} :<br />  {{ chat.message }}</div>
             </div>
+          </div>
+          <form id="chat_form">
+            <div class="flexbox">
+              <div>Name:</div>
+              <input id="chat_name" type="text" class="stretch">
+            </div>
+            <div class="flexbox">
+              <div>Message:</div>
+              <input id="chat_message" type="text">
+            </div>
+            <input type="submit" value="Send">
+          </form>
         </div>
-        <form id="chat_form">
-          <div class="flexbox">
-            <div>Name:</div>
-            <input id="chat_name" type="text" class="stretch">
-          </div>
-          <div class="flexbox">
-            <div>Message:</div>
-            <input id="chat_message" type="text">
-          </div>
-          <input type="submit" value="Send">
-        </form>
       </div>
-    </div>
-
-
-    <div class="container marketing">
-
-        <!-- Section Previews -->
+      <div class="container marketing">
         <div class="row">
           <div ng-repeat="section in sections" class="col-lg-4">
             <img class="rounded-circle" src="{{ section.prv }}" alt="Generic placeholder image" width="140" height="140">
@@ -119,9 +53,6 @@
             <p><a class="btn btn-secondary" href="#{{ section.name }}" role="button">View details &raquo;</a></p>   
           </div>
         </div>
-
-        <!-- Section Full Information -->
-
         <div>
           <div ng-repeat="section in sections">
             <hr class="featurette-divider">
@@ -148,86 +79,17 @@
             </div> 
           </div>
         </div>
-
         <hr class="featurette-divider">
-    </div>
-
-    <footer class="container">
-      <p class="float-right"><a href="#">Back to top</a></p>
-      <p>&copy; 2017-2018 a bl0ck1 project</p>
-    </footer>
-</main>
-
+      </div>
+      <footer class="container">
+        <p class="float-right"><a href="#">Back to top</a></p>
+        <p>&copy; 2017-2018 a bl0ck1 project</p>
+      </footer>
+    </main>
     <script src="https://code.jquery.com/jquery-latest.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
     <script src="bootstrap.min.js"></script>
-    <script src="/main.js"></script>
-    
-    <script>
-/*
-      function ChatController($scope){
-
-        $scope.sections = [
-          {
-            name: "About",
-            teaser: "Teaser1",
-            prv: "preview.gif",
-            header: "About Header",
-            subheader: "SubHeader",
-            details: "Lots of Details!",
-            img: "holder.svg"
-          },
-          {
-            name: "Features",
-            teaser: "Teaser2",
-            prv: "preview.gif",
-            header: "Features Header",
-            subheader: "SubHeader",
-            details: "Lots of details.",
-            img: "holder.svg"
-          },
-          {
-            name: "Technology",
-            teaser: "Teaser3",
-            prv: "preview.gif",
-            header: "Technology Header",
-            subheader: "SubHeader",
-            details: "Lots of details.",
-            img: "holder.svg"
-          }
-        ]
-
-        $scope.chatroom = [
-          {name: "Host",
-          message: "Welcome"},
-        ];
-
-        var socket = io.connect();
-
-        socket.on('connect', function(data) {
-        socket.emit('join', 'Hello World from client');
-        });
-
-        socket.on('broad', function(data) {
-          console.log(data)
-          $scope.chatroom.push(data);
-          $scope.$apply();
-          $("#messages_wrapper").scrollTop($("#messages_wrapper")[0].scrollHeight);
-        });
-
-        $('form').submit(function(e){
-          e.preventDefault();
-          var data = {"name": $('#chat_name').val(),
-                      "message": $('#chat_message').val()};
-          socket.emit('messages', data);
-        })
-      }
-*/
-      $(function(){
-        $("#messages_wrapper").scrollTop($("#messages_wrapper")[0].scrollHeight);
-      });
-
-    </script>
+    <script src="js/main.js"></script>
   </body>
 </html>

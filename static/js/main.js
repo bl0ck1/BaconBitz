@@ -44,11 +44,6 @@ $(function() {
             socket.emit('new message', data);
             $('#chat_message').val(''); 
             addChatMessage(data);
-             /*
-            $scope.chatroom.push(data);
-            $scope.$apply();
-            $("#messages_wrapper").scrollTop($("#messages_wrapper")[0].scrollHeight);
-            */
         });
    
      // Sends a chat message
@@ -131,29 +126,6 @@ $(function() {
     $scope.chatroom.push(data);
     $scope.$apply();
     $("#messages_wrapper").scrollTop($("#messages_wrapper")[0].scrollHeight);
-         
-     /*
-    // Don't fade the message in if there is an 'X was typing'
-    var $typingMessages = getTypingMessages(data);
-    options = options || {};
-    if ($typingMessages.length !== 0) {
-      options.fade = false;
-      $typingMessages.remove();
-    }
-
-    var $usernameDiv = $('<span class="username"/>')
-      .text(data.username)
-      .css('color', getUsernameColor(data.username));
-    var $messageBodyDiv = $('<span class="messageBody">')
-      .text(data.message);
-
-    var typingClass = data.typing ? 'typing' : '';
-    var $messageDiv = $('<li class="message"/>')
-      .data('username', data.username)
-      .addClass(typingClass)
-      .append($usernameDiv, $messageBodyDiv);
-
-    addMessageElement($messageDiv, options);*/
   }
 
   // Adds the visual chat typing message
