@@ -1,4 +1,6 @@
-function ChatController($scope){
+var app = angular.module('ChatController', []);
+
+app.controller('myCtrl', function($scope) {
 
    $scope.loggedId = "false";
    
