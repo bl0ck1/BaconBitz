@@ -3,6 +3,7 @@ var app = angular.module('myApp', []);
 app.controller('ChatController', function($scope) {
 
    $scope.loggedId = "false";
+   $scope.apply();
    
    $scope.sections = [
           {
