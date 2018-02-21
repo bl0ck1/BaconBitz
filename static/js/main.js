@@ -30,24 +30,24 @@ function ChatController($scope){
           }
         ]
    
-        $scope.chatroom = [
-          {name: "Host",
-          message: "Welcome"},
-        ];
+        $scope.chatroom = [];
   
 $(function() {
    
-          $('form').submit(function(e){
-          e.preventDefault();
-          var data = {"name": $('#chat_name').val(),
-                      "message": $('#chat_message').val()};
-            socket.emit('new message', data);
-            $('#chat_message').val(''); 
-            addChatMessage(data);
-        });
+  $('form').submit(function(e){
+    var message = $('#chat_message').val()
+    if (message.length > 0) {
+      e.preventDefault();
+      var data = {"name": $('#chat_name').val(),
+                "message": message};
+      socket.emit('new message', data);
+      $('#chat_message').val(''); 
+      addChatMessage(data);
+    }
+  });
    
-     // Sends a chat message
-  function sendMessage () {
+  // Sends a chat message
+  function sendMessage() {
     var message = $inputMessage.val();
     // Prevent markup from being injected into the message
     message = cleanInput(message);
@@ -123,6 +123,7 @@ $(function() {
 
   // Adds the visual chat message to the message list
   function addChatMessage (data, options) {
+    console.log(data);
     $scope.chatroom.push(data);
     $scope.$apply();
     $("#messages_wrapper").scrollTop($("#messages_wrapper")[0].scrollHeight);
@@ -226,13 +227,7 @@ $(function() {
     }
     // When the client hits ENTER on their keyboard
     if (event.which === 13) {
-      if (username) {
-        sendMessage();
-        socket.emit('stop typing');
-        typing = false;
-      } else {
-        setUsername();
-      }
+      $('form').submit();
     }
   });
 

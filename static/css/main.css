@@ -36,7 +36,10 @@ body {
 #chat_form > div{
   float:left;
 }
-.flexbox { display: flex; }
+.flexbox {
+  display: flex;
+  width:100%;
+}
 .flexbox .stretch { flex: 1; }
 .flexbox .normal { flex: 0; margin: 0 0 0 1rem; }
 .flexbox div input { padding: .5em 1em; width: 100%; }
@@ -84,7 +87,8 @@ body {
   overflow-y: hidden;
 }
 #chat_form{
-  padding: 10px 10px 10px 0px;
+  margin: 0px;
+  padding: 10px 10px 10px 10px;
   position: absolute;
   bottom: 0px;
   width: 100%;
