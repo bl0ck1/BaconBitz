@@ -1,6 +1,6 @@
 function ChatController($scope){
 
-   $scope.LoggedId = false;
+   $scope.loggedId = false;
    
    $scope.sections = [
           {
