@@ -39,6 +39,7 @@ app.controller('ChatController', function($scope) {
         $scope.profile = {};
 
       function onSignIn(googleUser) {
+        console.log('hi');
         $scope.profile = googleUser.getBasicProfile();
         console.log('ID: ' + $scope.profile.getId()); // Do not send to your backend! Use an ID token instead.
         console.log('Name: ' + $scope.profile.getName());
