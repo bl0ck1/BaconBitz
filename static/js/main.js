@@ -2,8 +2,7 @@ var app = angular.module('myApp', []);
 
 app.controller('ChatController', function($scope) {
 
-   $scope.loggedId = "false";
-   $scope.$apply();
+   $scope.loggedId = false;
    
    $scope.sections = [
           {
@@ -37,13 +36,16 @@ app.controller('ChatController', function($scope) {
    
         $scope.chatroom = [];
 
+        $scope.profile = {};
+
       function onSignIn(googleUser) {
-        var profile = googleUser.getBasicProfile();
-        console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-        console.log('Name: ' + profile.getName());
-        console.log('Image URL: ' + profile.getImageUrl());
-        console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-      }   
+        $scope.profile = googleUser.getBasicProfile();
+        console.log('ID: ' + $scope.profile.getId()); // Do not send to your backend! Use an ID token instead.
+        console.log('Name: ' + $scope.profile.getName());
+        console.log('Image URL: ' + $scope.profile.getImageUrl());
+        console.log('Email: ' + $scope.profile.getEmail()); // This is null if the 'email' scope is not present.
+      }
+
  
 $(function() {
    
