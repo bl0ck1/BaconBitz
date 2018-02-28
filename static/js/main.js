@@ -75,7 +75,7 @@ $(function() {
 
 
       var data = {"timestamp": getISODateTime(new Date()),
-                "name": $scope.profile.getName(),
+                "name": profile.getName(),
                 "message": message};
       socket.emit('new message', data);
       $('#chat_message').val(''); 
