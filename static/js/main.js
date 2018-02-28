@@ -37,16 +37,16 @@ app.controller('ChatController', function($scope) {
         $scope.chatroom = [];
 
         $scope.profile = {};
+
+        function onSignIn(googleUser) {
+          $scope.profile = googleUser.getBasicProfile();
+          console.log('ID: ' + $scope.profile.getId()); // Do not send to your backend! Use an ID token instead.
+          console.log('Name: ' + $scope.profile.getName());
+          console.log('Image URL: ' + $scope.profile.getImageUrl());
+          console.log('Email: ' + $scope.profile.getEmail()); // This is null if the 'email' scope is not present.
+        }
  
 $(function() {
-
-  function onSignIn(googleUser) {
-    $scope.profile = googleUser.getBasicProfile();
-    console.log('ID: ' + $scope.profile.getId()); // Do not send to your backend! Use an ID token instead.
-    console.log('Name: ' + $scope.profile.getName());
-    console.log('Image URL: ' + $scope.profile.getImageUrl());
-    console.log('Email: ' + $scope.profile.getEmail()); // This is null if the 'email' scope is not present.
-  }
 
   function getISODateTime(d){
       // padding function
