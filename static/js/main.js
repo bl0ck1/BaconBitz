@@ -49,12 +49,33 @@ app.controller('ChatController', function($scope) {
 
  
 $(function() {
-   
+
+  function getISODateTime(d){
+      // padding function
+      var s = function(a,b){return(1e15+a+"").slice(-b)};
+
+      // default date parameter
+      if (typeof d === 'undefined'){
+          d = new Date();
+      };
+
+      // return ISO datetime
+      return d.getFullYear() + '-' +
+          s(d.getMonth()+1,2) + '-' +
+          s(d.getDate(),2) + ' ' +
+          s(d.getHours(),2) + ':' +
+          s(d.getMinutes(),2) + ':' +
+          s(d.getSeconds(),2);
+  }
+
   $('form').submit(function(e){
     var message = $('#chat_message').val()
     if (message.length > 0) {
       e.preventDefault();
-      var data = {"name": $('#chat_name').val(),
+
+
+      var data = {"timestamp": getISODateTime(new Date()),
+                "name": $scope.profile.getName(),
                 "message": message};
       socket.emit('new message', data);
       $('#chat_message').val(''); 

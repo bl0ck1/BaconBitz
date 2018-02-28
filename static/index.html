@@ -29,7 +29,7 @@
           <h2>Live Demo:</h2>
           <div id="messages_wrapper">
             <div ng-repeat="chat in chatroom" style="list-style: none;">
-              <div class="speech-bubble">{{ chat.name }} :<br />  {{ chat.message }}</div>
+              <div class="">[{{ chat.timestamp }}] {{ chat.name }} :  {{ chat.message }}</div>
             </div>
           </div>
           <form id="chat_form">
